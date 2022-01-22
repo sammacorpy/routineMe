@@ -7,11 +7,8 @@ import 'package:routineme/screens/todos.dart';
 import 'package:routineme/themes/customcolors.dart';
 import 'package:routineme/themes/globaltheme.dart';
 
-
-
 // sample flutter app
 void main() => runApp(const MyApp());
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
