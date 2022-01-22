@@ -1,19 +1,27 @@
 // import 'package:flutter/material.dart';
 // import '../models/task.dart';
-import 'package:routineme/Interface/priority.dart';
+import 'package:routineme/models/priority.dart';
 
-class ITodo {
-  String name;
-  String id;
-  Priority priority;
-  bool active;
+class TodoModel {
+  late String name;
+  late String id;
+  late Priority priority;
+  late bool active;
 
-  ITodo({
+  TodoModel({
     required this.id,
     required this.name,
     required this.priority,
     required this.active,
   });
+
+  TodoModel.fromJson(dynamic data){
+    name = data['name'];
+    id = data['id'];
+    priority = data['priority'];
+    active = data['active'];
+
+  }
 }
 
 
