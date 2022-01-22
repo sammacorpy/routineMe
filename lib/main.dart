@@ -4,6 +4,7 @@ import 'package:routineme/screens/groceries.dart';
 import 'package:routineme/screens/home.dart';
 import 'package:routineme/screens/routines.dart';
 import 'package:routineme/screens/todos.dart';
+import 'package:routineme/themes/customcolors.dart';
 import 'package:routineme/themes/globaltheme.dart';
 
 
@@ -20,14 +21,15 @@ class MyApp extends StatelessWidget {
     GlobalTheme theme = GlobalTheme(
       ctx: context,
       isDark: false,
-      bg1: const Color(0xFFF6F6F6),
-      bg2: const Color(0xFFFCFCFC),
-      primary1: const Color(0xFFF6F6F6),
-      primary2: const Color(0xFF010101),
-      accent1: const Color(0xFF0CD06D),
-      accent2: const Color(0xFF0CD06D),
+      bg1: CustomColors.bg1,
+      bg2: CustomColors.bg2,
+      primary1: CustomColors.primary1,
+      primary2: CustomColors.primary2,
+      accent1: CustomColors.accent1,
+      accent2: CustomColors.accent2,
     );
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Routine Me',
       routes: {
         '/routines': (context) => const Routine(),
