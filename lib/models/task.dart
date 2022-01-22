@@ -2,8 +2,7 @@ class Task {
   int _id;
   String _task, _date, _time, _status;
 
-  Task(this._task, this._date, this._time, this._status);
-  Task.withId(this._id, this._task, this._date, this._time, this._status);
+  Task(this._id, this._task, this._date, this._time, this._status);
 
   int get id => _id;
   String get task => _task;
@@ -33,7 +32,6 @@ class Task {
     return map;
   }
 
-  
   Task.fromMapObject(Map<String, dynamic> map) {
     this._id = map['id'];
     this._task = map['task'];
