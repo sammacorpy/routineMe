@@ -43,7 +43,7 @@ class NavIcons extends StatelessWidget {
             iconSize: 12,
             enableFeedback: false,
             icon: Icon(
-              (active) ? iconObject[text]['active'] : iconObject[text!=null ? text: 'Add']['default'],
+              (active) ? iconObject[text]['active'] : iconObject[text ?? 'Add']['default'],
               size: scale * 23,
               color: color ?? (active ? CustomColors.primary2 :CustomColors.mattBlack),
             ),

@@ -3,37 +3,38 @@
 import 'package:routineme/models/priority.dart';
 
 class TodoModel {
-  late String name;
-  late String id;
-  late Priority priority;
-  late bool active;
+  final String title;
+  final String id;
+  Priority priority;
+  final bool active;
+  bool completed = false;
+  DateTime? createdAt;
 
   TodoModel({
     required this.id,
-    required this.name,
+    required this.title,
     required this.priority,
     required this.active,
+    this.createdAt,
   });
 
-  TodoModel.fromJson(dynamic data){
-    name = data['name'];
-    id = data['id'];
-    priority = data['priority'];
-    active = data['active'];
+  TodoModel.fromJson(dynamic data):
+    title = data['title'],
+    id = data['id'],
+    priority = data['priority'],
+    active = data['active'],
+    createdAt = data['createdAt'],
+    completed = data['completed'];
 
+  void moveToComplete () {
+    completed = true;
+  }
+
+  void moveToDraft () {
+    completed = false;
+  }
+
+  void changePriority (Priority p) {
+    priority = p;
   }
 }
-
-
-
-
-  //   String appBarTitle;
-  //  Task task;
-  // todo_state todoState;
-  // new_task(this.task, this.appBarTitle, this.todoState);
-  // bool _isEditingText = false;
-
-  // @override  //Decorator
-  //   State<StatefulWidget> createState() {
-  //   return task_state(this.task, this.appBarTitle, this.todoState);
-  // }
