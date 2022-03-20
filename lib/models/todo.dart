@@ -1,8 +1,6 @@
-// import 'package:flutter/material.dart';
-// import '../models/task.dart';
 import 'package:routineme/models/priority.dart';
 
-class TodoModel {
+class Todo {
   final String title;
   final String id;
   Priority priority;
@@ -10,7 +8,7 @@ class TodoModel {
   bool completed = false;
   DateTime? createdAt;
 
-  TodoModel({
+  Todo({
     required this.id,
     required this.title,
     required this.priority,
@@ -18,7 +16,7 @@ class TodoModel {
     this.createdAt,
   });
 
-  TodoModel.fromJson(dynamic data):
+  Todo.fromJson(dynamic data):
     title = data['title'],
     id = data['id'],
     priority = data['priority'],

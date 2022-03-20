@@ -1,7 +1,7 @@
-class IGrocery {
+class Grocery {
   String name;
   String id;
-  IGrocery({
+  Grocery({
     required this.name,
     required this.id,
   });

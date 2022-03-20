@@ -29,11 +29,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Routine Me',
       routes: {
-        '/routines': (context) => const Routine(),
-        '/todo': (context) => const Todo(),
-        '/groceries': (context) => const Grocery(),
-        '/dashboard': (context) => const Dashboard(),
-        '/': (context) => const Home()
+        '/profile': (context) => const DashboardScreen(),
+        '/': (context) => const HomeScreen()
       },
       theme: theme.themeData,
       initialRoute: '/',

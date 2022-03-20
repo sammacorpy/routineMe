@@ -1,21 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:routineme/components/floatingaddbutton.dart';
+import 'package:routineme/components/interface/icons.dart';
+import 'package:routineme/components/namedicons.dart';
 import 'package:routineme/components/navicons.dart';
 import 'package:routineme/devicesettings/devicesettings.dart';
 import 'package:routineme/themes/customcolors.dart';
 
-class BottomNavBar extends StatefulWidget {
-  BottomNavBar({Key? key}) : super(key: key);
+class BottomNavBar extends StatelessWidget {
+  final String page;
+  final void Function(String) changePage;
+  const BottomNavBar({Key? key, required this.page, required this.changePage})
+      : super(key: key);
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<BottomNavBar> {
-  var active = "Home";
-  void setActive(String val) {
-    setState(() {
-      active = val;
-    });
+  AppIcons _navBarIcons({
+    required String page,
+    required Map<IconState, IconData> icon,
+    bool floating = false,
+    required void Function() onClick,
+    Color? color,
+  }) {
+    final isActive = page == this.page;
+    color = color ?? (isActive ? CustomColors.primary2 : CustomColors.mattBlack);
+    if (floating) {
+      return FloatingIcon(
+        icon: (isActive ? icon[IconState.active] : icon[IconState.deactive])
+            as IconData,
+        color: color,
+        onClick: onClick,
+      );
+    }
+    return NavIcons(
+      text: page,
+      icon: (isActive ? icon[IconState.active] : icon[IconState.deactive])
+          as IconData,
+      onClick: onClick,
+      color: color,
+    );
   }
 
   @override
@@ -38,44 +58,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          NavIcons(
-            text: "Home",
-            setActive: () => setActive("Home"),
-            active: active == "Home",
-          ),
-          NavIcons(
-            text: "Routine",
-            active: active == "Routine",
-            setActive: ()=>setActive("Routine"),
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: CustomColors.accent1,
-                borderRadius: const BorderRadius.all(Radius.circular(100)),
-                border: Border.all(width: 1, color: CustomColors.accent1)),
-            width: vh * 0.075 - vw * 0.05,
-            padding: const EdgeInsets.all(2),
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                NavIcons(
-                  active: active == 'Add',
-                  color: CustomColors.primary1,
-                )
-              ],
-            ),
-          ),
-          NavIcons(
-            text: "Todo",
-            setActive: ()=>setActive("Todo"),
-            active: active == "Todo",
-          ),
-          NavIcons(
-            text: "Me",
-            setActive: ()=>setActive("Me"),
-            active: active == "Me",
-          ),
+          _navBarIcons(page: "Home", icon: NamedIcons.home, onClick: () => changePage("Home")),
+          _navBarIcons(page: "Routine", icon: NamedIcons.routine, onClick: () => changePage("Routine")),
+          _navBarIcons(page: "Add", icon: NamedIcons.add, onClick: () => print("Add something"), floating: true),
+          _navBarIcons(page: "Todo", icon: NamedIcons.todo, onClick: () => changePage("Todo")),
+          _navBarIcons(page: "Grocery", icon: NamedIcons.grocery, onClick: () => changePage("Grocery")),
         ],
       ),
     );

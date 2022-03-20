@@ -1,7 +1,7 @@
 import 'package:routineme/models/frequency.dart';
 import 'package:routineme/models/priority.dart';
 
-class RoutineModel {
+class Routine {
   String name;
   String id;
   Priority priority;
@@ -9,7 +9,7 @@ class RoutineModel {
   DateTime? starttime;
   DateTime? endtime;
 
-  RoutineModel({
+  Routine({
     required this.id,
     required this.name,
     required this.priority,
