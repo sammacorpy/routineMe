@@ -12,7 +12,7 @@ class GlobalTheme {
   final Color accent2;
   final bool isDark;
   final BuildContext ctx;
- 
+
   /// Default constructor
   const GlobalTheme({
     required this.ctx,
@@ -24,10 +24,11 @@ class GlobalTheme {
     required this.bg1,
     required this.bg2,
   });
- 
+
   ThemeData get themeData {
     /// Create a TextTheme and ColorScheme, that we can use to generate ThemeData
-    TextTheme txtTheme = (isDark ? ThemeData.dark() : ThemeData.light()).textTheme;
+    TextTheme txtTheme =
+        (isDark ? ThemeData.dark() : ThemeData.light()).textTheme;
     Color txtColor = txtTheme.bodyText1?.color as Color;
     ColorScheme colorScheme = ColorScheme(
       // Decide how you want to apply your own custom them, to the MaterialApp
@@ -40,17 +41,24 @@ class GlobalTheme {
       surface: bg2,
       onBackground: txtColor,
       onSurface: txtColor,
-      error:Colors.redAccent, 
+      error: Colors.redAccent,
       onError: Colors.red.shade100,
       onPrimary: CustomColors.primaryText,
       onSecondary: CustomColors.secondaryText,
     );
- 
+
     /// Now that we have ColorScheme and TextTheme, we can create the ThemeData
-    var t = ThemeData.from(textTheme: GoogleFonts.latoTextTheme(Theme.of(ctx).textTheme), colorScheme: colorScheme)
-        // We can also add on some extra properties that ColorScheme seems to miss
-        .copyWith(buttonColor : accent1, cursorColor: accent2, highlightColor: accent1, toggleableActiveColor: accent2, primaryColor: primary1);
- 
+    var t = ThemeData.from(
+      textTheme: GoogleFonts.latoTextTheme(Theme.of(ctx).textTheme),
+      colorScheme: colorScheme,
+    ).copyWith(
+      buttonTheme: ButtonThemeData(buttonColor: accent1),
+      highlightColor: accent1,
+      toggleableActiveColor: accent2,
+      primaryColor: primary1,
+      textSelectionTheme: TextSelectionThemeData(cursorColor: accent2),
+    );
+
     /// Return the themeData which MaterialApp can now use
     return t;
   }

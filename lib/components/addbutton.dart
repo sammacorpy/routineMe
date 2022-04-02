@@ -28,7 +28,7 @@ class AddIcon extends AppIcons {
         width: scale * 30,
         height: scale * 30,
         child: IconButton(
-          onPressed: () => print("Something to pop"),
+          onPressed: () => 1,
           padding: const EdgeInsets.all(0),
           splashRadius: scale * 18,
           splashColor: CustomColors.splashColor,
