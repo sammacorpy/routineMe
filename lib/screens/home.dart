@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:routineme/components/bottomnavbar.dart';
 import 'package:routineme/themes/customcolors.dart';
-import 'package:routineme/providers/switchtab.dart';
 
 
 class HomeScreen extends StatelessWidget {

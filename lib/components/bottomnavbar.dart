@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:routineme/components/addbutton.dart';
-import 'package:routineme/components/interface/appicons.dart';
-import 'package:routineme/components/namedicons.dart';
 import 'package:routineme/components/navicons.dart';
 import 'package:routineme/devicesettings/devicesettings.dart';
-import 'package:routineme/providers/switchtab.dart';
-import 'package:routineme/themes/customcolors.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod/riverpod.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key? key}) : super(key: key);
