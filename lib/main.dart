@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routineme/screens/dashboards.dart';
-import 'package:routineme/screens/groceries.dart';
 import 'package:routineme/screens/home.dart';
-import 'package:routineme/screens/routines.dart';
-import 'package:routineme/screens/todos.dart';
 import 'package:routineme/themes/customcolors.dart';
 import 'package:routineme/themes/globaltheme.dart';
 
 // sample flutter app
-void main() => runApp(const MyApp());
+void main() {
+  runApp(
+    const ProviderScope(child: MyApp())
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
