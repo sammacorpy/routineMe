@@ -10,11 +10,10 @@ abstract class Table {
 
 class DBTable {
   late Database _db;
-  late String _query;
+  late String _tableName;
   late List<String> _columns;
   DBTable(Database db, Type name){
-    String tableName = name.toString().replaceAll("Table", "");
-    _query = "CREATE TABLE $tableName (";
+    _tableName = name.toString().replaceAll("Table", "");
     _columns = [];
     _db = db;
   }
@@ -24,7 +23,12 @@ class DBTable {
     return this;
   }
 
-  void save(){
-    _db.execute(_query! + _columns.join(", ") + ")");
+  void create() {
+    _db.execute("CREATE TABLE $_tableName (" + _columns.join(", ") + ")");
   }
+
+  void delete() {
+    _db.execute("DROP TABLE $_tableName");
+  }
+  
 }

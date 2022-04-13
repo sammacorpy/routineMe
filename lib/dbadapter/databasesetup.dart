@@ -1,4 +1,5 @@
 import 'package:path/path.dart' as Path;
+import 'package:routineme/dbmigrations/migrations.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -26,9 +27,7 @@ class RoutineDatabase {
   }
 
   Future<void> _createDB(Database db, dynamic version) async {
-
-    await db.execute(sql)
-
+    await Migrations.migrate(db, version);
   }
 
 }
