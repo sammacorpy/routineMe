@@ -20,11 +20,11 @@ class BottomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const <Widget>[
-          NavIcons(text: "Home"),
-          NavIcons(text: "Routine"),
+          NavIcons(tab: "Home"),
+          NavIcons(tab: "Routine"),
           AddIcon(),
-          NavIcons(text: "Todo"),
-          NavIcons(text: "Grocery"),
+          NavIcons(tab: "Todo"),
+          NavIcons(tab: "Grocery"),
         ],
       ),
     );

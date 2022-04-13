@@ -5,7 +5,6 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container();
+    return const Text("Dashboard Screen working");
   }
-  
 }

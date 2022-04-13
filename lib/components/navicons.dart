@@ -7,10 +7,10 @@ import 'package:routineme/themes/customcolors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NavIcons extends AppIcons {
-  final String text;
+  final String tab;
   const NavIcons({
     Key? key,
-    required this.text,
+    required this.tab,
   }) : super(key: key);
 
   @override
@@ -18,8 +18,8 @@ class NavIcons extends AppIcons {
     // get scale of device
     double scale = DeviceSettings.textScaleFactor(context);
     double vw = DeviceSettings.deviceWidth(context);
-    bool isActive =ref.watch(isActiveProvider(text));
-    IconData icon = NamedIcons.getIcon(text, isActive);
+    bool isActive =ref.watch(isActiveProvider(tab));
+    IconData icon = NamedIcons.getIcon(tab, isActive);
     Color color = isActive ? CustomColors.accent1 : CustomColors.mattBlack;
 
 
@@ -35,7 +35,7 @@ class NavIcons extends AppIcons {
           SizedBox(
             height: scale * 30,
             child: IconButton(
-              onPressed: () => ref.read(switchTabProvider).changeTab(text),
+              onPressed: () => ref.watch(switchTabProvider).changeTab(tab),
               padding: const EdgeInsets.all(0),
               splashRadius: scale * 20,
               splashColor: CustomColors.splashColor,
@@ -52,7 +52,7 @@ class NavIcons extends AppIcons {
             ),
           ),
           Text(
-            text,
+            tab,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: scale * 10,
